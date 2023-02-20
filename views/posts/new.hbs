@@ -1,0 +1,19 @@
+<ul class="navigation">
+  <li><a class="home" href="/posts">Home</a></li>
+  <li><a href="/users/{{session_user._id}}"><img width="50" height="50" src={{session_user.picture}}></a></li>
+  <li><a href="/users/{{session_user._id}}">Profile</a></li>
+  <li><a class="new-post-link" href="/posts/new">New Post</a></li>
+  <li><form action='/sessions?_method=DELETE' method='POST'>
+      <input type="submit" value="Log Out">
+    </form> </li>
+</ul>
+
+<h1>New Post</h1>
+
+<form id="new-post-form" action="/posts" method="post">
+  <label for="message">Message: </label>
+  <input id="message" type="text" name="message" maxlength="250" required>
+  <label for="picture">Image url: </label>
+  <input id="picture" type="text" name="picture">
+  <input type="submit" value="Submit">
+</form>

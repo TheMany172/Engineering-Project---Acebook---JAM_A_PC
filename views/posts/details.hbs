@@ -1,0 +1,32 @@
+<ul class="navigation">
+  <li><a class="home" href="/posts">Home</a></li>
+  <li><a href="/users/{{session_user._id}}"><img width="50" height="50" src={{session_user.picture}}></a></li>
+  <li><a href="/users/{{session_user._id}}">Profile</a></li>
+  <li><a class="new-post-link" href="/posts/new">New Post</a></li>
+  <li><form action='/sessions?_method=DELETE' method='POST'>
+      <input type="submit" value="Log Out">
+    </form> </li>
+</ul>
+
+
+<h1>Post</h1>
+
+<a href="/users/{{post.user_id}}">User</a>
+<p>{{post.message}}</p>
+{{#if isPicture}}
+<img width="200" height="200" src={{post.picture}}>
+{{/if}}
+
+<form action="/posts/{{post._id}}/create" method="post">
+    <input id="message" type="text" name="message" maxlength="250" required>
+    <input type="submit" value="Create">
+</form>
+
+<ul class="comments">
+  {{#each collection}}
+  <a href="/users/{{this.comment.user_id}}">{{this.username}}</a>
+  <li>{{this.comment.message}}</li> 
+  {{/each}}
+</ul>
+
+<a class="new-post-link" href="/posts">Home</a>
